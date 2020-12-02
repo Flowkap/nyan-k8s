@@ -13,6 +13,13 @@ kubectl create ns nyan
 kubectl apply -f .
 ```
 
+And delete with:
+
+```
+cd manifests
+kubectl delete -f .
+```
+
 ## Helm
 
 Contains a helm chart to deploy nyan cat:
@@ -21,6 +28,12 @@ Contains a helm chart to deploy nyan cat:
 cd helm/nyan
 kubectl create ns nyan
 helm install nyan .
+```
+
+And delete with:
+
+```
+helm delete nyan
 ```
 
 ## Access
