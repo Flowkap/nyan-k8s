@@ -1,0 +1,24 @@
+replicaCount: 1
+
+image:
+  repository: daviey/nyan-cat-web
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  hosts:
+    - host: localhost
+      paths:
+        - /nyan
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 64Mi
+  requests:
+    cpu: 20m
+    memory: 16Mi

@@ -1,0 +1,7 @@
+apiVersion: v2
+name: nyan
+description: Awesome nyan cat helm chart!
+
+type: application
+version: 1.0.0
+appVersion: "latest"

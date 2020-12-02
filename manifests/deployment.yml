@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nyan-deployment
+  labels:
+    app: nyan
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nyan
+  template:
+    metadata:
+      labels:
+        app: nyan
+    spec:
+      containers:
+        - name: nyan
+          image: daviey/nyan-cat-web:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            limits:
+              cpu: 100m
+              memory: 64Mi
+            requests:
+              cpu: 20m
+              memory: 16Mi
