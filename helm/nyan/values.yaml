@@ -10,10 +10,9 @@ service:
 
 ingress:
   enabled: true
+  path: /nyan
   hosts:
-    - host: localhost
-      paths:
-        - /nyan
+    - localhost
 
 resources:
   limits:
