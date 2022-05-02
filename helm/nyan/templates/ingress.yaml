@@ -2,7 +2,7 @@
 {{- $fullName := include "nyan.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
 {{- $ingressPath := .Values.ingress.path -}}
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ include "nyan.fullname" . }}
@@ -20,9 +20,12 @@ spec:
       http:
         paths:
           - path: {{ $ingressPath }}/?(.*)
+            pathType: Prefix
             backend:
-              serviceName: {{ $fullName }}
-              servicePort: {{ $svcPort }}
+              service:
+                name: {{ $fullName }}
+                port: 
+                  number: {{ $svcPort }}
   {{- end }}
 status:
   loadBalancer:
